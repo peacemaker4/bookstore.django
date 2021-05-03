@@ -1,0 +1,118 @@
+{% extends "library/layouts.html" %}
+{% load static %}
+
+{% block title %}
+    Library home
+{% endblock title %}
+
+{% block content %}
+<!-- Hero -->
+
+                <div class="bg-image overflow-hidden" style="background-image: url({% static 'assets/media/photos/books1.jpg' %})">
+                    <div class="bg-primary-dark-op">
+                        <div class="content content-narrow content-full">
+                            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center mt-5 mb-2 text-center text-sm-left">
+                                <div class="flex-sm-fill">
+                                    <h1 class="font-w600 text-white mb-0 invisible" data-toggle="appear">Home page</h1>
+                                    <h2 class="h4 font-w400 text-white-75 mb-0 invisible" data-toggle="appear" data-timeout="250">MyLibrary</h2>
+                                </div>
+                                <div class="flex-sm-00-auto mt-3 mt-sm-0 ml-sm-3">
+                                    <span class="d-inline-block invisible" data-toggle="appear" data-timeout="350">
+                                        <a class="btn btn-danger px-4 py-2" data-toggle="click-ripple" href="{% url 'createbook' %}">
+                                            <i class="fa fa-plus mr-1"></i> Add new book
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content content-narrow">
+                    
+
+                <!-- END Hero -->
+
+                <!-- Stats -->
+                    <div class="row">
+                        <div class="col-6 col-md-3 col-lg-6 col-xl-3">
+                            <a class="block block-rounded block-link-pop border-left border-success border-4x" href="javascript:void(0)">
+                                <div class="block-content block-content-full">
+                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Books here:</div>
+                                    <div class="font-size-h2 font-w400 text-dark">{{books_count}}</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3 col-lg-6 col-xl-3">
+                            <a class="block block-rounded block-link-pop border-left border-warning border-4x" href="javascript:void(0)">
+                                <div class="block-content block-content-full">
+                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Full of genres:</div>
+                                    <div class="font-size-h2 font-w400 text-dark">{{genres_count}}</div>
+                                </div>
+                            </a>
+                        </div>
+                    
+                    </div>
+
+                    <div class="row">
+                        <!-- Contextual Table -->
+                            <div class="col-12">
+                                <div class="block">
+                                    <div class="block-header">
+                                        <h3 class="block-title">Recently published</h3>
+                                    </div>
+                                    <div class="block-content">
+                                        <table class="table table-borderless table-vcenter table-hover">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Author</th>
+                                                    <th>Published</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for book in recents %}
+                                                    <tr class="table-active">
+                                                        <td class="font-w600 font-size-sm">
+                                                            <a href="{% url 'details' id=book.id %}" class="text-success">{{book.title}}</a>
+                                                        </td>
+                                                        <td class="font-w600 font-size-sm">{{ book.author }}</td>
+                                                        <td class="d-none d-sm-table-cell">
+                                                            <span class="badge badge-danger">
+                                                                <i class="fa fa-fw fa-check"></i>
+                                                                {{ book.published_at }}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END Contextual Table -->
+                       <div class="col-md-12">
+                            <!-- Slider with multiple images and center mode -->
+                            <div class="block">
+                                <div class="block-header">
+                                    <h3 class="block-title">
+                                        <i class="fa fa-bookmark fa-fw text-info"></i> New Covers
+                                    </h3>
+                                </div>
+                                <div class="js-slider slick-nav-black slick-nav-hover" data-dots="true" data-arrows="true" data-slides-to-show="3" data-center-mode="true" data-autoplay="true" data-autoplay-speed="3000">
+                                    {% for book in books_covers %}
+                                        <div>
+                                            <a class="img-link mr-2" href="{% url 'details' id=book.id %}">
+                                            {% if book.cover %}
+                                                <img class="img-fluid" src="{{ book.cover.url }}" alt="cover" style="height: 350px;">
+                                            {% else %}
+                                                <img class="img-fluid" height="100px" src="{% static 'assets/media/photos/photo15@2x.jpg' %}" alt="cover" style="height: 350px;">
+                                            {% endif %}
+                                            </a> 
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <!-- END Slider with multiple images and center mode -->
+                        </div>   
+                    </div>      
+{% endblock content %}

@@ -1,0 +1,103 @@
+{% extends "library/layouts.html" %}
+{% load static %}
+{% block title %}
+    Library
+{% endblock title %}
+
+{% block content %}
+    <div class="col-xl-12">
+    <!-- Dynamic Table with Export Buttons -->
+                    <div class="block">
+                        <div class="block-header">
+                            <h3 class="block-title">All books  <small>search</small></h3>
+                             <div class="block-options">
+                             <div class="block-options-item">
+                    </div>
+                </div>
+                        </div>
+                        <div class="block-content block-content-full">
+                            <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width: 80px;">№</th>
+                                        <th class="d-none d-sm-table-cell" >Cover</th>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Publisher</th>
+                                        <th>Published</th>
+                                        <th class="text-center" style="width: 100px;">Tool</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for book in books %}
+                                    <tr>
+                                        <td class="text-center font-size-sm">{{book.id}}</td>
+                                        <td class="text-center" scope="row">
+                                            {% if book.cover %}
+                                            <image src="{{ book.cover.url }}" alt="img"  style="border-radius: 5%; height: 100px; ">
+                                            {% else %}
+                                            <image src="{% static 'assets/media/photos/nocover.png' %}" alt="img" style="border-radius: 5%; height: 100px; ">
+                                            {% endif %}
+                                        </td>
+                                        <td class="font-w600 font-size-sm">
+                                        {% comment %} href="{% url 'details' id=book.id %}" {% endcomment %}
+                                            <a href="{% url 'details' id=book.id %}" class="text-primary">{{book.title}}</a>
+                                        </td>
+                                        <td class="font-w600 font-size-sm">
+                                            <a >{{book.author}}</a>
+                                        </td>
+                                        <td>
+                                            <em class="text-muted font-size-sm">{{book.publisher}}</em>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <span class="badge badge-primary">{{book.published_at}}</span>
+                                        </td>
+                                        <td class="text-center">
+                                    <div class="btn-group">
+                                    {% comment %} {% url 'edit' id=book.id %} {% endcomment %}
+                                        <a href="" class="btn btn-sm btn-info js-tooltip-enabled" 
+                                            data-toggle="modal" title="" data-target="#modal-block-popin{{book.id}}" data-original-title="Book Summary">
+                                            <i class="fa fa-fw fa-receipt"></i>
+                                        </a> 
+                                        
+
+            <div class="modal fade" id="modal-block-popin{{book.id}}" tabindex="-1" role="dialog" aria-labelledby="modal-block-popin{{book.id}}" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-popin" role="document">
+                <div class="modal-content">
+                    <div class="block block-themed block-transparent mb-0">
+                        <div class="block-header bg-modern">
+                            <h3 class="block-title text-center">
+                                <i class="fa fa-fw fa-newspaper"></i>
+                                Описание
+                            </h3>
+                            <div class="block-options">
+                                
+                            </div>
+                        </div>
+                        <div class="block-content font-size-sm">
+                            <p> </p>
+                            {{book.summary}}                            
+                        </div>
+                        <div class="block-content block-content-full text-right border-top">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                                    </div>
+                                </td>
+                                    </tr>
+                                    
+    
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- END Dynamic Table with Export Buttons -->
+    </div>
+
+
+
+{% endblock content %}
