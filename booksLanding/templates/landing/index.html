@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Main</title>
+        <meta name="description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+        <meta name="author" content="pixelcave">
+        <meta name="robots" content="noindex, nofollow">
+        <meta property="og:title" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework">
+        <meta property="og:site_name" content="OneUI">
+        <meta property="og:description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+        <meta property="og:type" content="website">
+        <link rel="shortcut icon" href="assets/media/favicons/favicon.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="assets/media/favicons/favicon-192x192.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/media/favicons/apple-touch-icon-180x180.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+        <link rel="stylesheet" id="css-main" href="{% static 'assets/css/oneui.min.css' %}">
+
+    </head>
+    <body>
+        <div class="bg-sidebar-dark p-3 push">
+                        <!-- Toggle Navigation -->
+                        <div class="d-lg-none">
+                            <!-- Class Toggle, functionality initialized in Helpers.coreToggleClass() -->
+                            <button type="button" class="btn btn-block btn-secondary d-flex justify-content-between align-items-center" data-toggle="class-toggle" data-target="#horizontal-navigation-click-centered-dark" data-class="d-none">
+                                Menu - Click Centered Dark
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+                        <!-- END Toggle Navigation -->
+
+                        <!-- Navigation -->
+                        <div id="horizontal-navigation-click-centered-dark" class="d-none d-lg-block mt-2 mt-lg-0">
+                            <ul class="nav-main nav-main-horizontal nav-main-horizontal-center nav-main-dark justify-content-end">
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link active" href="{% url 'homepage' %}">
+                                        <i class="nav-main-link-icon fa fa-home text-warning"></i>
+                                        <span class="nav-main-link-name text-warning">Home</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                {% comment %} {% url 'signup' %} {% endcomment %}
+                                    <a class="nav-main-link active" href="{% url 'register' %}">
+                                        <i class="nav-main-link-icon fa fa-user-plus text-primary"></i>
+                                        <span class="nav-main-link-name text-primary">Register</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                {% comment %} {% url 'login' %} {% endcomment %}
+                                    <a class="nav-main-link active" href="{% url 'login' %}">
+                                        <i class="nav-main-link-icon si si-login text-info"></i>
+                                        <span class="nav-main-link-name text-info">Login</span>
+                                    </a>
+                                </li>
+                                <li>
+                               
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- END Navigation -->
+                    </div>
+                   
+       
+        
+        
+<div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-boxed side-trans-enabled sidebar-o-xs"><div id="page-overlay"></div>
+
+
+<aside id="side-overlay" class="font-size-sm" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: -20px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: 100%; padding-right: 20px; padding-bottom: 0px; overflow: hidden scroll;"><div class="simplebar-content" style="padding: 0px;">
+                
+
+            </div></div></div></div><div class="simplebar-placeholder" style="width: auto; height: 1307px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 233px; transform: translate3d(0px, 0px, 0px); display: block;"></div></div></aside>
+            <!-- END Side Overlay -->
+
+            <nav id="sidebar" aria-label="Main Navigation" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: -20px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: 100%; padding-right: 20px; padding-bottom: 0px; overflow: hidden scroll;"><div class="simplebar-content" style="padding: 0px;">
+
+                <!-- Side Navigation -->
+                <div class="content-side content-side-full">
+                    <ul class="nav-main">
+                        <li class="nav-main-heading">Tags</li>
+                        <li class="nav-main-item">
+                                <a class="btn btn-info js-tooltip-enabled m-2" href="{% url 'landing' %}" data-toggle="tooltip" title="" data-original-title="genre">
+                                    <i class="fa fa-tags"></i> <span class="text-sm m-2">Все</span>
+                                </a>
+                            {% for genre in genres %}
+                            {% comment %}  {% endcomment %}
+                                <a class="btn btn-primary js-tooltip-enabled m-2" href="{% url 'books.filter' genre_slug=genre.slug %}" data-toggle="tooltip" title="" data-original-title="genre">
+                                    <i class="fa fa-tag"></i> <span class="text-sm m-2">{{genre.genre}}</span>
+                                </a>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+                <!-- END Side Navigation -->
+            </div></div></div></div><div class="simplebar-placeholder" style="width: auto; height: 1040px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 294px; transform: translate3d(0px, 0px, 0px); display: block;"></div></div></nav>
+            <!-- END Sidebar -->
+
+         <!-- Hero Content -->
+               <div class="bg-image" style="background-image: url('{% static 'assets/media/photos/books2.jpg' %}');">
+                    <div class="bg-primary-dark-op">
+                        <div class="content content-full text-center py-7">
+                            <h1 class="h2 text-white mb-2 js-appear-enabled animated fadeInDown" data-toggle="appear" data-class="animated fadeInDown">Welcome to our Library.</h1>
+                            <h2 class="h4 font-w400 text-white-75 js-appear-enabled animated fadeInDown" data-toggle="appear" data-class="animated fadeInDown">Feel free to explore over {{books_count}}+ books!</h2>
+                            <a class="btn btn-rounded btn-success px-4 py-2 invisible" data-toggle="appear" data-class="animated bounceIn" href="{% url 'login' %}">Log in!</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- END Hero Content -->
+
+            <!-- Main Container -->
+            <main id="main-container">
+
+                <div class="content content-boxed">
+                        <div class="row">
+                            <!-- Story -->
+                            {% if not filter_books_count %}
+                                 <h2 class="h3 font-w300 invisible mb-5" data-toggle="appear" data-class="animated fadeInUp"><i class="fa fa-times-circle"></i>
+                                    No books with this genre found...</h2>
+                            {% else %}
+                                {% for book in books %}
+                                    <div class="col-sm-6 col-xl-4 invisible" data-toggle="appear" data-class="animated zoomIn">
+                                        <!-- Team Member -->
+                                        <div class="block">
+                                            <div class="block-header">
+                                                <h3 class="block-title">
+                                                    {{book.title}} <br> <small>{{book.author}}</small>                    </h3>
+                                                <div class="block-options">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="block-content block-content-full text-center bg-image" style="background-image: url('{% static 'assets/media/photos/photo27@2x.jpg' %}'); ">
+                                            <a class="img-link mr-2" href="{% url 'details' id=book.id %}">
+                                                {% if book.cover %}
+                                                    <img class="img-fluid"  src="{{ book.cover.url }}" alt="">
+                                                {% else %}
+                                                    <img class="img-fluid"  src="{% static 'assets/media/photos/nocover.png' %}" alt="">
+                                                {% endif %}
+                                            </a>
+                                            </div>
+                                            <div class="block-content font-size-sm">
+                                                <p>
+                                                    {{ book.summary | truncatechars:250}}
+                                                </p>
+                                                <a class="btn btn-sm btn-light" href="{% url 'details' id=book.id %}">Continue Reading..</a>
+                                            </div>
+                                        </div>
+                                        <!-- END Team Member -->
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <!-- END Story -->
+
+
+                            
+
+                        </div>
+                </div>
+                <!-- END Page Content -->
+
+            </main>
+            <!-- END Main Container -->
+        </div>
+       
+        <script src="{% static 'assets/js/oneui.core.min.js' %}"></script>
+        <script src="{% static 'assets/js/oneui.app.min.js' %}"></script>
+    
+    </body>
+</html>

@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+        <title>SignUp</title>
+
+        <meta name="description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+        <meta name="author" content="pixelcave">
+        <meta name="robots" content="noindex, nofollow">
+        <meta property="og:title" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework">
+        <meta property="og:site_name" content="OneUI">
+        <meta property="og:description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="">
+        <meta property="og:image" content="">
+        <link rel="shortcut icon" href="assets/media/favicons/favicon.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="assets/media/favicons/favicon-192x192.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/media/favicons/apple-touch-icon-180x180.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+        <link rel="stylesheet" id="css-main" href="{% static 'assets/css/oneui.min.css' %}">
+
+    </head>
+    <body>
+        
+        <div id="page-container" class="side-trans-enabled">
+            <main id="main-container">
+
+                <!-- Page Content -->
+                <div class="bg-image" style="background-image: url('{% static 'assets/media/photos/photo28@2x.jpg' %}');">
+                    <div class="hero-static bg-black-50">
+                        <div class="content">
+                            <div class="row justify-content-center">
+                                <div class="col-md-8 col-lg-6 col-xl-4">
+                                    <!-- Unlock Block -->
+                                    <div class="block block-themed mb-0">
+                                        <div class="block-header bg-success">
+                                            <h3 class="block-title text-center"> Sign up <i class="fa fa-user-plus"></i></h3>
+                                        </div>
+                                        <div class="block-content">
+                                            <div class="p-sm-3 px-lg-4 py-lg-5 text-center">
+                                                 <div class="text-center">
+                                        <p class="mb-2">
+                                            <i class="fa fa-2x fa-smile-beam text-success"></i>
+                                        </p>
+                                        <h1 class="h4  mb-1">
+                                            Create Account
+                                        </h1>
+                                        <h2 class="h6 font-w400 text-muted mb-3">
+                                            Get your access to whole library
+                                        </h2>
+                                    </div>
+                                                <!-- END Header -->
+                                    {% if error %}
+                                        <div class="alert alert-danger alert-dismissable" role="alert">
+                                            <p class="mb-0">{{ error }}</p>
+                                        </div>
+                                    {% endif %}
+                                   <form class="js-validation-signup" method="POST">
+                                        {% csrf_token %}
+                                        <div class="py-3">
+                                            <div class="form-group">
+                                                {{ form.username }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.email }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ profile.phone }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.password1 }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.password2 }}
+                                            </div>
+                                            <div>
+                                                <span>
+                                                    Already have account? 
+                                                    <a href="{% url 'login' %}" class="text-primary">Sign in</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row justify-content-center mb-0">
+                                            <div class="col-md-6 col-xl-5">
+                                                <button type="submit" class="btn btn-block btn-success">
+                                                    <i class="fa fa-fw fa-plus mr-1"></i> Sign Up
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- END Sign Up Form -->
+                                                
+                                                <!-- END Unlock Form -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END Unlock Block -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Page Content -->
+
+            </main>
+            <!-- END Main Container -->
+        </div>
+        <!-- END Page Container -->
+
+        <script src="assets/js/oneui.core.min.js"></script>
+        <script src="assets/js/oneui.app.min.js"></script>
+        <script src="assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+        <script src="assets/js/pages/op_auth_signup.min.js"></script>
+    
+
+</body></html>

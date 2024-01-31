@@ -1,0 +1,39 @@
+{% extends "library/layouts.html" %}
+{% load static %}
+
+{% block title %}
+    Add book
+{% endblock title %}
+
+{% block content %}
+
+     <div class="block block-themed block-transparent mb-0">
+                    <div class="block-header bg-primary">
+                        <h3 class="block-title">
+                            <i class="fa fa-fw fa-plus"></i>
+                            Add book 
+                        </h3>
+                        <div class="block-options">
+                            <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                <i class="fa fa-fw fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="block-content font-size-sm">
+                        <div class="block-content block-content-full">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row push">
+                                    <div class="col-lg-12 col-xl-12">
+                                        {{ forms.as_p }}
+                                    </div>
+                                    <button type="submit" class="btn btn-sm btn-primary">
+                                        <i class="fa fa-check mr-1"></i>Confirm
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+{% endblock content %}

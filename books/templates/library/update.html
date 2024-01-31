@@ -1,0 +1,22 @@
+{% extends 'library/layouts.html' %}
+
+{% block title %}
+Update - {{book.title}}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="block">
+            <div class="block-content">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-check-double"></i>
+                        Update
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
