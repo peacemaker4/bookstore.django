@@ -1,4 +1,4 @@
-# Bookstore Django
+# MyLibrary Django
 
 A user-friendly bookstore web application built using the Python Django framework.
 
