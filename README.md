@@ -6,7 +6,7 @@ A user-friendly bookstore web application built using the Python Django framewor
 
 ## Application functionality
 
-- Authorization: sign in, sign up with email
+- Authorization: sign in, sign up with email, log out
 - CRUD - View, edit, upload, download books
 - Search, pagination
 - Categories of genres
